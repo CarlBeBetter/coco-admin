@@ -1,0 +1,58 @@
+# 1- tomcat
+server:
+  address: localhost
+  port: 9909
+  servlet:
+    #应用路径，配置应用路径，可方便进行反向代理
+    context-path:
+    #context-path: /cocoadmin
+
+# 2- 基础配置
+spring:
+  # 选择配置分支，先读取系统环境变量，如果没有则默认值为 dev
+  profiles:
+    active: ${COCO_ADMIN:dev}
+
+  # application info
+  application:
+    name: coco-admin
+
+  # thymeleaf 访问根路径
+  thymeleaf:
+    prefix: classpath:/view/
+
+  # Spring Security 生效否 配置
+  #security.basic.enabled: false    #security.basic.enabled 配置已过时不可用
+
+
+
+# 3- 环境配置
+---
+# dev环境
+spring:
+  profiles: dev
+  # dev环境 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=GMT%2B8&characterEncoding=utf-8
+    username: root
+    password: carl1223
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#是否需要输入验证码
+captcha:
+  enable: false
+
+---
+# prod环境
+spring:
+  profiles: prod
+  # prod环境 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?serverTimezone=GMT%2B8&characterEncoding=utf-8
+    username: root
+    password: carl1223
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#是否需要输入验证码
+captcha:
+  enable: true
