@@ -15,7 +15,7 @@ CREATE TABLE `persistent_logins` (
 
 
 -- ----------------------------
--- Table structure for sys_authority
+-- Table structure for sys_authority 系统权限
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_authority`;
 CREATE TABLE `sys_authority`  (
